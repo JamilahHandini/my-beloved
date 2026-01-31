@@ -54,11 +54,6 @@ export class CountdownComponent implements OnInit {
 
 
   	calculateTime() {
-		console.log(this.data?.invitation);
-		// this.invitation = {
-		// 	...this.data.invitation,
-		// 	date: new Date(this.data.invitation?.date),
-      	// };
 		this.targetDate = new Date(this.data?.countDownDate);
 
 		const now = new Date().getTime();

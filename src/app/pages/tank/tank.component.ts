@@ -241,6 +241,6 @@ export class TankComponent {
 
 	next() {
 		const giftId = this.route.snapshot.paramMap.get('giftId');
-		this.router.navigate(['gift', giftId, 'puzzle']);
+		this.router.navigate([giftId, 'puzzle']);
 	}
 }

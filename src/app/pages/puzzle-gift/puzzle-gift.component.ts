@@ -218,6 +218,6 @@ export class PuzzleGiftComponent implements OnInit {
 
 	nextPage() {
 		const giftId = this.route.snapshot.paramMap.get('giftId');
-		this.router.navigate(['gift', giftId, 'message']);
+		this.router.navigate([giftId, 'message']);
 	}
 }

@@ -37,6 +37,6 @@ export class LandingComponent implements OnInit {
 	}
 
 	goNext() {
-		this.router.navigate(['gift', this.giftId, 'tank']);
+		this.router.navigate([this.giftId, 'tank']);
 	}
 }

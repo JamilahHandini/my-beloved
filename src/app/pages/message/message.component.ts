@@ -97,6 +97,6 @@ export class MessageComponent {
 
     next() {
         const giftId = this.route.snapshot.paramMap.get('giftId');
-        this.router.navigate(['gift', giftId, 'countdown']);
+        this.router.navigate([giftId, 'countdown']);
     }
 }
