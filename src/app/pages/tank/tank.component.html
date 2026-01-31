@@ -1,0 +1,75 @@
+<div class="game-container">
+	<div class="side-panel">
+			<div class="tank">
+				<div
+					class="tank-fill"
+					[style.height.%]="(progress() / maxProgress) * 100"
+				></div>
+			</div>
+			<div class="status">
+				<p class="hint">{{ hint() }}</p>
+				<p class="timer">⏳ {{ timeLeft() }}s</p>
+			</div>
+	</div>
+	<div class="board">
+		@for (card of cards(); track card.id) {
+			@if (!card.removed) {
+				<div
+					class="photo-card"
+					[style.left.px]="card.x"
+					[style.top.px]="card.y"
+					[style.transform]="'rotate(' + card.rotation + 'deg)'"
+					(pointerdown)="startDrag(card, $event)"
+					>
+					<img 
+						[src]="card.image" 
+						draggable="false"
+					/>
+
+					@if (card.revealed && card.type !== 'empty') {
+						<span
+							class="heart"
+							[class.fake]="card.type === 'fake'"
+							(click)="collect(card)"
+							>
+							{{ card.type === 'real' ? '💗' : '💔' }}
+						</span>
+					}
+				</div>
+			}
+		}
+	</div>
+</div>
+
+@if (showIntro()) {
+	<div class="overlay">
+		<div class="popup intro">
+			<h2>💗 Tangki Cinta 💗</h2>
+
+			<p>Geser foto-foto untuk menemukan cinta yang tersembunyi</p>
+			<p>Ayo penuhi tangki cinta ini, waktumu terbatas!</p>
+
+			<button class="primary" (click)="startGame()">
+				Siap? Mulai!
+			</button>
+		</div>
+	</div>
+}
+
+@if (gameOver()) {
+	<div class="overlay">
+		<div class="popup">
+			@if (success()) {
+				<div class="emoji success-emoji">🥳</div>
+				<h2>BERHASIL</h2>
+				<p>Cintanya penuh!</p>
+				<button (click)="next()">Next</button>
+			} @else {
+				<div class="emoji fail-emoji">🥺</div>
+				<h2>Waktu Habis</h2>
+				<p>Ayo coba terus sampai berhasil!</p>
+				<button (click)="retry()">Retry</button>
+			}
+		</div>
+	</div>
+}

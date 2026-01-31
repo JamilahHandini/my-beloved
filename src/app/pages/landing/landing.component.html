@@ -1,0 +1,31 @@
+<div class="landing-wrapper">
+    <div class="hearts">
+    @for (heart of hearts; track $index) {
+        <span
+        class="heart"
+        [style.--left]="heart.left + '%'"
+        [style.--delay]="heart.delay + 's'"
+        [style.--size]="heart.size + 'px'"
+        [style.--duration]="heart.duration + 's'">
+        </span>
+    }
+    </div>
+
+    <div class="content">
+        <h1 class="title">MY BELOVED</h1>
+
+        <div class="from-to">
+            Dari <b>{{ gift()?.fromName }}</b><br />
+            Untuk <b>{{ gift()?.toName }}</b>
+        </div>
+
+        <p class="subtitle">
+            Karena setiap cinta pantas dirayakan<br />
+            dengan cara yang istimewa 💗
+        </p>
+
+        <button class="start-btn" (click)="goNext()">
+            Open Me!
+        </button>
+    </div>
+</div>

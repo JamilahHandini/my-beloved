@@ -1,0 +1,49 @@
+<div class="emoji-frame">
+    <span class="emoji slow">🌸</span>
+    <span class="emoji medium reverse">🌷</span>
+    <span class="emoji fast">🍃</span>
+    <span class="emoji medium">🍃</span>
+    <span class="emoji slow reverse">🌷</span>
+    <span class="emoji fast">🌸</span>
+    <span class="emoji medium">🍃</span>
+    <span class="emoji fast reverse">🍃</span>
+    <span class="emoji slow">🌸</span>
+    <span class="emoji medium">🌷</span>
+</div>
+<div class="countdown-wrapper">
+    <div class="countdown-board">
+        <div class="time-box">
+            <span class="number">{{ timeLeft().days }}</span>
+            <span class="label">Hari</span>
+        </div>
+        <div class="time-box">
+            <span class="number">{{ timeLeft().hours }}</span>
+            <span class="label">Jam</span>
+        </div>
+        <div class="time-box">
+            <span class="number">{{ timeLeft().minutes }}</span>
+            <span class="label">Menit</span>
+        </div>
+        <div
+            class="time-box flip"
+            [class.animate]="isFlipping()">
+            <span class="number">{{ timeLeft().seconds }}</span>
+            <span class="label">Detik</span>
+        </div>
+    </div>
+
+    <p class="target-text">
+       <strong> COUNTDOWN </strong>
+    </p>
+
+    @if (isWithInvitation) {
+        <div class="invitation-card">
+            <h3>{{ invitation.title }}</h3>
+            <div class="info">
+                <p>📍 {{ invitation.place }}</p>
+                <p>📅 {{ invitation.date | date:'EEE MMM dd yyyy HH:mm:ss' }}</p>
+                <p>👗 Dress Code: {{ invitation.dressCode }}</p>
+            </div>
+        </div>
+    }
+</div>

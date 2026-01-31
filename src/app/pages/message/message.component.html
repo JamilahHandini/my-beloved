@@ -1,0 +1,33 @@
+<div class="message-page">
+    <div class="photo-slider">
+        <div class="polaroid">
+            <img
+                [src]="photos[currentPhoto()]"
+                class="slide-photo"
+            />
+            <div class="polaroid-caption">
+                💖
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-area" #chatArea>
+        @for (msg of visibleMessages(); track $index) {
+            <div class="bubble left">
+                {{ msg }}
+            </div>
+        }
+        @if (typingText()) {
+            <div class="bubble left typing">
+                {{ typingText() }}<span class="cursor">|</span>
+            </div>
+        }
+        @if (showNext()) {
+            <div class="chat-next right">
+                <button class="next-btn" (click)="next()">
+                    Next
+                </button>
+            </div>
+        }
+    </div>
+</div>

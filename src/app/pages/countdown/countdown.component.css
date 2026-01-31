@@ -1,0 +1,132 @@
+.countdown-wrapper {
+	min-height: 100vh;
+	background: linear-gradient(
+		135deg,
+		#000000 0%,
+		#12000a 35%,
+		#2b0016 60%,
+		#ff5c8a 140%
+	);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 24px;
+	color: #ffe4ec;
+	font-family: 'Poppins', sans-serif;
+}
+
+.countdown-board {
+	display: flex;
+	gap: 16px;
+}
+
+.time-box {
+	width: 90px;
+	height: 110px;
+	background: rgba(255, 92, 138, 0.15);
+	border: 2px solid #ff5c8a;
+	border-radius: 18px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 10px 30px rgba(255, 92, 138, 0.25);
+	position: relative;
+	overflow: hidden;
+}
+
+.time-box .number {
+	font-size: 2.2rem;
+	font-weight: 700;
+}
+
+.time-box .label {
+	font-size: 0.75rem;
+	opacity: 0.85;
+}
+
+.time-box.flip.animate {
+  	animation: flipUp 0.5s ease;
+}
+
+@keyframes flipUp {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-12px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.target-text {
+	font-size: 1.2rem;
+	opacity: 0.9;
+}
+
+.invitation-card {
+	margin-top: 12px;
+	background: rgba(0, 0, 0, 0.45);
+	border: 2px solid #ff5c8a;
+	border-radius: 24px;
+	padding: 24px 28px;
+	width: 340px;
+	text-align: center;
+	box-shadow: 0 20px 40px rgba(255, 92, 138, 0.35);
+}
+
+.invitation-card h3 {
+	margin-bottom: 16px;
+	font-size: 1.3rem;
+}
+
+.invitation-card .info p {
+	margin: 6px 0;
+	font-size: 0.95rem;
+}
+
+.emoji-frame {
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	z-index: 5;
+}
+
+.emoji {
+	position: absolute;
+	font-size: clamp(24px, 4vw, 64px);
+	opacity: 0.85;
+	animation: spin 18s linear infinite;
+}
+
+.emoji.slow   { animation-duration: 26s; }
+.emoji.medium { animation-duration: 18s; }
+.emoji.fast   { animation-duration: 12s; }
+
+.emoji.reverse {
+ 	animation-direction: reverse;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.emoji:nth-child(1)  { top: 2%;  left: 8%;  transform: rotate(-12deg); }
+.emoji:nth-child(2)  { top: 12%; right: 6%; transform: rotate(8deg); }
+.emoji:nth-child(3)  { top: 22%; left: 4%;  transform: rotate(-20deg); }
+.emoji:nth-child(4)  { top: 34%; right: 10%; transform: rotate(14deg); }
+.emoji:nth-child(5)  { top: 46%; left: 6%;  transform: rotate(-6deg); }
+
+.emoji:nth-child(6)  { top: 58%; right: 4%; transform: rotate(18deg); }
+.emoji:nth-child(7)  { top: 68%; left: 10%; transform: rotate(-10deg); }
+.emoji:nth-child(8)  { top: 78%; right: 8%; transform: rotate(6deg); }
+.emoji:nth-child(9)  { top: 88%; left: 5%;  transform: rotate(-14deg); }
+.emoji:nth-child(10) { top: 95%; right: 12%; transform: rotate(10deg); }

@@ -1,0 +1,70 @@
+<p class="hint">Susun foto kita sampai utuh</p>
+<div class="puzzle-wrapper" *ngIf="!showGiftChooser">
+	<div
+		class="puzzle-grid"
+		cdkDropList
+		[cdkDropListSortingDisabled]="true"
+		(cdkDropListDropped)="drop($event)"
+	>
+		<div
+			class="puzzle-piece"
+			*ngFor="let piece of pieces"
+			cdkDrag
+			[style.backgroundImage]="'url(' + imageUrl + ')'"
+			[style.backgroundPosition]="piece.backgroundPosition"
+			[cdkDragData]="piece"
+		></div>
+	</div>
+</div>
+
+@if (showGiftChooser && !showFinalGift) {
+	<div class="overlay">
+		<div class="popup">
+			<h3>Pilih salah satu foto ini untuk menemukan hadiah kamu!</h3>
+
+			<div class="gift-row">
+				@for (gift of giftOptions; track gift.id) {
+					@if (!gift.hidden) {
+						<div
+							class="polaroid"
+							[class.selected]="gift.selected"
+							(click)="chooseGift(gift)"
+						>
+							<div class="polaroid-inner">
+								<img [src]="gift.polaroidImage" />
+							</div>
+						</div>
+					}
+				}
+			</div>
+		</div>
+	</div>
+}
+
+<div class="overlay" *ngIf="showFinalGift">
+	<div class="popup final">
+		<h3>Hadiah yang kamu pilih...</h3>
+
+		<div class="polaroid-flip auto-flip">
+			<div class="polaroid-card">
+				<div class="polaroid-face front">
+					<img [src]="selectedGift?.polaroidImage" />
+				</div>
+
+				<div class="polaroid-face back">
+					<img [src]="selectedGift?.giftImage" />
+				</div>
+			</div>
+		</div>
+
+		<p class="instruction">
+			Screenshot / foto halaman ini<br />
+			lalu kirimkan hasil screenshot ini <br />
+			ke pasangan / sahabatmu yang memberi kejutan ini!
+		</p>
+
+		<button class="next-btn" (click)="nextPage()">
+			Next
+		</button>
+	</div>
+</div>

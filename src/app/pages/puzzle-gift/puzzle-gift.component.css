@@ -1,0 +1,211 @@
+.puzzle-wrapper {
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(
+		135deg,
+		#000000 0%,
+		#12000a 35%,
+		#2b0016 60%,
+		#ff5c8a 140%
+	);
+}
+
+.puzzle-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	width: 500px;
+	height: 500px;
+	gap: 4px;
+}
+
+.puzzle-piece {
+	width: 100%;
+	height: 100%;
+	background-size: 500px 500px;
+}
+
+.cdk-drag-placeholder {
+	opacity: 0;
+	width: 0 !important;
+	height: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.cdk-drag-preview {
+	box-sizing: border-box;
+	border-radius: 8px;
+}
+
+.cdk-drag-animating {
+  	transition: none !important;
+}
+
+.cdk-drop-list-dragging .puzzle-piece:not(.cdk-drag-preview) {
+  	transform: none !important;
+}
+
+.hint {
+	position: absolute;
+	left: 50%;
+	top: calc(50% - 350px);
+	transform: translateX(-50%);
+	color: #ffffff;
+	font-size: 35px;
+	text-align: center;
+	z-index: 2;
+}
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(255, 182, 193, 0.35);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+	isolation: isolate;
+	background: linear-gradient(
+		135deg,
+		#000000 0%,
+		#12000a 35%,
+		#2b0016 60%,
+		#ff5c8a 140%
+	);
+}
+
+:host {
+	position: static;
+	transform: none !important;
+}
+
+.popup {
+	background: white;
+	padding: 24px;
+	border-radius: 20px;
+	text-align: center;
+	width: 90%;
+	max-width: 360px;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.popup.final {
+  	animation: pop 0.6s ease;
+}
+
+@keyframes pop {
+	0% { transform: scale(0.7); opacity: 0; }
+	100% { transform: scale(1); opacity: 1; }
+}
+
+.gift-row {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.polaroid {
+	width: 90px;
+	height: 140px;
+	background: #fff;
+	border-radius: 12px;
+	padding: 6px;
+	box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+	cursor: pointer;
+	transition:
+		transform 0.6s ease,
+		opacity 0.4s ease,
+		scale 0.4s ease;
+}
+
+.polaroid:hover {
+  	transform: rotate(-3deg) scale(1.05);
+}
+
+.polaroid.selected {
+	transform: rotateY(180deg) scale(1.05);
+	z-index: 2;
+}
+
+.polaroid-inner img {
+	width: 100%;
+	border-radius: 8px;
+}
+
+.final-gift {
+	width: 200px;
+	margin: 16px 0;
+}
+
+.instruction {
+	font-size: 14px;
+	color: #555;
+}
+
+.next-btn {
+	margin-top: 16px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 999px;
+	background: #e91e63;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	position: relative;
+	z-index: 999999999;
+	pointer-events: auto;
+}
+
+.polaroid-flip {
+	perspective: 1200px;
+	width: 220px;
+	height: 320px;
+	margin: 20px auto;
+}
+
+.polaroid-card {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	animation: autoFlip 5s infinite linear;
+}
+
+.polaroid-face {
+	position: absolute;
+	inset: 0;
+	background: #fff;
+	border-radius: 16px;
+	padding: 10px;
+	box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+	backface-visibility: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.polaroid-face img {
+	width: 100%;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+.polaroid-face.back {
+  	transform: rotateY(180deg);
+}
+
+@keyframes autoFlip {
+	0%   { transform: rotateY(0deg); }
+	50%  { transform: rotateY(180deg); }
+	100% { transform: rotateY(360deg); }
+}
+
+.polaroid-flip,
+.polaroid-card,
+.polaroid-face {
+  	pointer-events: none;
+}
