@@ -39,7 +39,9 @@ export class MessageComponent {
 			this.messages = data.loveMessages;
 			this.photos = data.tankLovePhotos;
             this.startSlider();
-            this.typeNextMessage();
+            setTimeout(() => {
+                this.typeNextMessage();
+            }, 5000)
 		});
     }
 
@@ -88,7 +90,7 @@ export class MessageComponent {
             this.typingText.set('');
             this.messageIndex++;
             this.typeNextMessage();
-            }, 600);
+            }, 1500);
         }
         }, 50);
     }

@@ -31,9 +31,9 @@ export class TankComponent {
 	timerId: any;
 	hint = signal('Geser foto untuk menemukan cinta!');
 
-	slideSound = new Audio('/assets/sounds/slide.mp3');
-	popSound = new Audio('/assets/sounds/pop.mp3');
-	failSound = new Audio('/assets/sounds/fail.mp3');
+	slideSound = new Audio('/assets/slide.mp3');
+	popSound = new Audio('/assets/pop.mp3');
+	failSound = new Audio('/assets/fail.mp3');
 
 	boardEl!: HTMLElement;
 	isDesktop = window.innerWidth >= 768;
@@ -78,6 +78,11 @@ export class TankComponent {
 		return gift.tankLovePhotos[randomIndex];
 	}
 
+	playSound(audio: HTMLAudioElement) {
+		audio.currentTime = 0;
+		audio.play().catch(() => {});
+	}
+
  	generateCards() {
 		const total = 30;
 		const realHearts = 10;
@@ -118,6 +123,8 @@ export class TankComponent {
   	}
 
   	startDrag(card: PhotoCard, event: PointerEvent) {
+		this.slideSound.play();
+
 		const boardRect = this.boardEl.getBoundingClientRect();
 		const cardSize = 120;
 
@@ -204,6 +211,7 @@ export class TankComponent {
 		if (this.progress() < this.maxProgress) {
 			this.gameOver.set(true);
 			this.success.set(false);
+			this.failSound.play();
 		}
 	}
 
