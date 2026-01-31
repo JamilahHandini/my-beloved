@@ -42,7 +42,7 @@
 	width: 100%;
 	background: linear-gradient(180deg, #ff9acb, #ff3f8e);
 	transition: height 0.4s ease;
-	border-radius: 14px;
+	border-radius: 10px;
 }
 
 .status {
