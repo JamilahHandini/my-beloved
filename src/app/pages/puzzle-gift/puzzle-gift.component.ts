@@ -1,4 +1,4 @@
-import { Component, OnInit, effect } from '@angular/core';
+import { Component, OnInit, effect, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,6 +32,7 @@ export class PuzzleGiftComponent implements OnInit {
 	pieces: PuzzlePiece[] = [];
 	imageUrl : any;
 	solved = false;
+	isMobile = false;
 
 	showGiftChooser = false;
 	showFinalGift = false;
@@ -60,10 +61,20 @@ export class PuzzleGiftComponent implements OnInit {
 	}
 
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+		this.checkScreenSize();
+	}
 
-  initPuzzle() {
+    @HostListener('window:resize')
+	onResize() {
+		this.checkScreenSize();
+	}
+
+	checkScreenSize() {
+		this.isMobile = window.innerWidth <= 600;
+	}
+
+  	initPuzzle() {
 		const temp: PuzzlePiece[] = [];
 		const gridSize = 3;
 
@@ -219,5 +230,10 @@ export class PuzzleGiftComponent implements OnInit {
 	nextPage() {
 		const giftId = this.route.snapshot.paramMap.get('giftId');
 		this.router.navigate([giftId, 'message']);
+	}
+
+	getBackgroundSize() {
+		const size = this.isMobile ? 100 * 3 : 500;
+		return `${size}px ${size}px`;
 	}
 }

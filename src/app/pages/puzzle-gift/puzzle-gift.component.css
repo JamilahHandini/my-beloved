@@ -209,3 +209,32 @@
 .polaroid-face {
   	pointer-events: none;
 }
+
+@media (max-width: 600px) {
+  .puzzle-grid {
+    width: 320px;
+    height: 320px;
+    gap: 2px;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+  }
+
+  .puzzle-piece {
+    width: 100px;
+    height: 100px;
+    background-size: 300px 300px;
+  }
+
+  .hint {
+	font-size: 25px;
+	top: calc(50% - 350px);
+  }
+}
+
+@media (max-width: 1000px) and (min-width: 600px) {
+
+  .hint {
+	font-size: 30px;
+	top: calc(50% - 400px);
+  }
+}

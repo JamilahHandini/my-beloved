@@ -12,6 +12,7 @@
 			cdkDrag
 			[style.backgroundImage]="'url(' + imageUrl + ')'"
 			[style.backgroundPosition]="piece.backgroundPosition"
+			[style.backgroundSize]="getBackgroundSize()"
 			[cdkDragData]="piece"
 		></div>
 	</div>

@@ -130,3 +130,19 @@
 .emoji:nth-child(8)  { top: 78%; right: 8%; transform: rotate(6deg); }
 .emoji:nth-child(9)  { top: 88%; left: 5%;  transform: rotate(-14deg); }
 .emoji:nth-child(10) { top: 95%; right: 12%; transform: rotate(10deg); }
+
+@media (max-width: 1000px) {
+	.time-box {
+		width: 80px;
+	}
+}
+
+@media (max-width: 600px) {
+	.time-box {
+		width: 70px;
+	}
+
+	.invitation-card {
+		width: 300px;
+	}
+}
