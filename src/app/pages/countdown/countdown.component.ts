@@ -35,6 +35,7 @@ export class CountdownComponent implements OnInit {
 		private sharedService : SharedService
 	){
 		effect(() => {
+			this.targetDate = new Date();
 			this.data = this.masterData();
 			if (!this.data) return;
 			this.isWithInvitation = this.data.isWithInvitation;
@@ -42,7 +43,6 @@ export class CountdownComponent implements OnInit {
 				...this.data.invitation,
 				date: new Date(this.data.invitation?.date),
 			};
-			console.log('inv',this.invitation);
     	});
 	}
 
@@ -54,7 +54,9 @@ export class CountdownComponent implements OnInit {
 
 
   	calculateTime() {
-		this.targetDate = new Date(this.data?.countDownDate);
+		if (this.data?.countDownDate) {
+			this.targetDate = new Date(this.data?.countDownDate);
+		}
 
 		const now = new Date().getTime();
 
