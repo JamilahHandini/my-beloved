@@ -71,7 +71,7 @@ export class PuzzleGiftComponent implements OnInit {
 	}
 
 	checkScreenSize() {
-		this.isMobile = window.innerWidth <= 600;
+		this.isMobile = window.innerWidth <= 767;
 	}
 
   	initPuzzle() {
@@ -191,7 +191,7 @@ export class PuzzleGiftComponent implements OnInit {
 
  	getIndexFromPosition(x: number, y: number): number {
 		const grid = 3;
-		const size = 500;
+		const size = this.isMobile ? 300 : 500;
 		const cell = size / grid;
 
 		const col = Math.floor(x / cell);
@@ -233,7 +233,20 @@ export class PuzzleGiftComponent implements OnInit {
 	}
 
 	getBackgroundSize() {
-		const size = this.isMobile ? 100 * 3 : 500;
+		const size = this.isMobile ? 300 : 500;
+		console.log(this.isMobile);
 		return `${size}px ${size}px`;
+	}
+
+	getWidthPuzzlePiece() {
+		const size = this.isMobile ? 300 : 500;
+		console.log(this.isMobile);
+		return `${size}px`;
+	}
+
+	getHeightPuzzlePiece() {
+		const size = this.isMobile ? 300 : 500;
+		console.log(this.isMobile);
+		return `${size}px`;
 	}
 }

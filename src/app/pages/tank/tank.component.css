@@ -60,6 +60,8 @@
 }
 
 .board {
+	width: 100vw;
+	height: 100vh;
 	position: relative;
 	background: #ff9acb;
 	border-radius: 16px;
@@ -110,13 +112,10 @@
 	}
 
 	.side-panel {
-		height: 100vh;
 		justify-content: center;
 	}
 
 	.board {
-		width: 75vw;
-		height: 100vh;
 		border-radius: 0;
 	}
 }
@@ -130,12 +129,9 @@
 	.side-panel {
 		flex-direction: row;
 		justify-content: center;
-		gap: 20px;
 	}
 
 	.board {
-		width: 100vw;
-		height: 200vw;
 		border-radius: 0;
 	}
 }

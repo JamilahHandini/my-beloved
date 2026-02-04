@@ -95,13 +95,9 @@ export class TankComponent {
 		...Array(total - realHearts - fakeHearts).fill('empty'),
 		].sort(() => Math.random() - 0.5);
 
-		const boardWidth = this.isDesktop
-		? window.innerWidth * 0.75
-		: window.innerWidth;
+		const boardWidth = window.innerWidth;
 
-		const boardHeight = this.isDesktop
-		? window.innerHeight
-		: window.innerWidth * 2;
+		const boardHeight = window.innerHeight;
 
 		this.cards.set(
 			types.map((type, i) => {

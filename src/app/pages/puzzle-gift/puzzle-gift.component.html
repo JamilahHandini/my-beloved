@@ -1,10 +1,12 @@
-<p class="hint">Susun foto kita sampai utuh</p>
+<p class="hint">Susun foto ini sampai utuh!</p>
 <div class="puzzle-wrapper" *ngIf="!showGiftChooser">
 	<div
 		class="puzzle-grid"
 		cdkDropList
 		[cdkDropListSortingDisabled]="true"
 		(cdkDropListDropped)="drop($event)"
+		[style.width]="getWidthPuzzlePiece()"
+		[style.height]="getHeightPuzzlePiece()"
 	>
 		<div
 			class="puzzle-piece"
