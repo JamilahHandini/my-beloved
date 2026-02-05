@@ -12,7 +12,6 @@ import { SharedService } from '../../shared.service';
 
 export class CountdownComponent implements OnInit {
 
-	targetLabel = signal<'Birthday' | 'Anniversary' | 'Valentine' | 'Special Day'>('Birthday');
 	targetDate = new Date();
 
 	isWithInvitation : boolean = false;

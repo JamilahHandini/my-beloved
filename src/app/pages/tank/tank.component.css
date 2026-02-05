@@ -262,4 +262,8 @@
     }
 }
 
+.game-container.dim {
+	filter: brightness(0.05);
+	opacity: 0.85;
+}
 

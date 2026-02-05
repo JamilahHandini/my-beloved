@@ -47,6 +47,8 @@ export class TankComponent {
 	giftId : any;
 	photos: string[] = [];
 
+	isDragging = false;
+
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
@@ -120,6 +122,7 @@ export class TankComponent {
 
   	startDrag(card: PhotoCard, event: PointerEvent) {
 		this.slideSound.play();
+		this.isDragging = true;
 
 		const boardRect = this.boardEl.getBoundingClientRect();
 		const cardSize = 120;
@@ -154,8 +157,9 @@ export class TankComponent {
     	};
 
 		const up = () => {
-		window.removeEventListener('pointermove', move);
-		window.removeEventListener('pointerup', up);
+			this.isDragging = false;
+			window.removeEventListener('pointermove', move);
+			window.removeEventListener('pointerup', up);
 		};
 
 		window.addEventListener('pointermove', move);
@@ -167,6 +171,7 @@ export class TankComponent {
 		if (card.type === 'real') {
 			this.progress.update(p => Math.min(p + 1, this.maxProgress));
 			this.hint.set('Cinta bertambah 💗');
+			this.isDragging = false;
 			this.popSound.play();
 		
 			if (this.progress() >= this.maxProgress) {
@@ -177,6 +182,7 @@ export class TankComponent {
 		if (card.type === 'fake') {
 			this.progress.update(p => Math.max(p - 1, 0));
 			this.hint.set('Ups… cinta palsu 💔');
+			this.isDragging = false;
 			this.failSound.play();
 		}
 
@@ -238,5 +244,13 @@ export class TankComponent {
 	next() {
 		const giftId = this.route.snapshot.paramMap.get('giftId');
 		this.router.navigate([giftId, 'puzzle']);
+	}
+
+	get isDim(): boolean {
+		return (
+			!this.isDragging &&
+			!this.showIntro() &&
+			!this.gameOver()
+		);
 	}
 }
